@@ -13,7 +13,7 @@ TodoList implemented by scratch on React.js. It contains 3 types of filters name
 
 **This project is inspired by REDEV-community, which you can find out about [Here](https://www.instagram.com/redev_courses/).**
 
-## How to use
+## How to use TodoList
 
 ### Add a new task
 
@@ -26,9 +26,20 @@ TodoList implemented by scratch on React.js. It contains 3 types of filters name
 - **Hover** the cursor over the desired task (The task will be highlighted in blue).
 - **Click** on the lock icon (The text will be crossed out).
 
-### Third edits in the readme
+### Edit a task
 
 - **Hover** the cursor over the desired task (The task will be highlighted in blue).
 - **Click** on the pencil icon (A field for editing the task will appear).
 - **Enter** your changes.
 - **Click** on the floppy disk icon or the "Enter" button on the keyboard.
+
+### Delete a task
+
+- **Hover** the cursor over the desired task (The task will be highlighted in blue).
+- **Click** on the trash icon (The task will be removed from the list).
+
+### Filter the list
+
+- **Click** on the "All" button if you need a complete list.
+- **Click** on the "All" button if you need a list of active tasks.
+- **Click** on the "All" button if you need a list of closed tasks.

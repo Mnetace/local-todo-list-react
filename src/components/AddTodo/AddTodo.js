@@ -3,19 +3,16 @@ import { v4 } from 'uuid'
 import { Row, Col, Button, FormControl } from 'react-bootstrap'
 import s from './AddTodo.module.css'
 
-function AddTodo({ todo, setTodo }) {
+function AddTodo({ addTodoItem }) {
   const [value, setValue] = useState('')
 
   function saveTodo() {
     if (value) {
-      setTodo([
-        ...todo,
-        {
-          id: v4(),
-          title: value,
-          status: true,
-        },
-      ])
+      addTodoItem({
+        id: v4(),
+        title: value,
+        status: true,
+      });
       setValue('')
     }
   }

@@ -13,34 +13,29 @@ import {
 function TodoList({ todo, setTodo }) {
   const [edit, setEdit] = useState(null)
   const [value, setValue] = useState('')
-  const [filtered, setFiltered] = useState(todo)
+  const [filteredItems, setFilteredItems] = useState(todo)
 
   useEffect(() => {
-    setFiltered(todo)
+    setFilteredItems(todo)
   }, [todo])
 
   function todoFilter(status) {
-    if (status === 'all') {
-      setFiltered(todo)
-    } else {
-      let newTodo = [...todo].filter((item) => item.status === status)
-      setFiltered(newTodo)
-    }
+    setFilteredItems(status === undefined
+        ? todo
+        : todo.filter(item => item.status === status)
+    )
   }
 
   function deleteTodo(id) {
-    const newTodo = [...todo].filter((item) => item.id !== id)
-    setTodo(newTodo)
+    setTodo(todo.filter((item) => item.id !== id))
   }
 
-  function statusTodo(id) {
-    const newTodo = [...todo].filter((item) => {
-      if (item.id === id) {
-        item.status = !item.status
-      }
-      return item
-    })
-    setTodo(newTodo)
+  function switchItemStatus(id) {
+    const item = todo.find(item => item.id === id);
+    if (item) {
+      item.status = !item.status
+      setTodo([...todo])
+    }
   }
 
   function editTodo(id, title) {
@@ -49,45 +44,43 @@ function TodoList({ todo, setTodo }) {
   }
 
   function saveTodo(id) {
-    let newTodo = [...todo].map((item) => {
-      if (item.id === id) {
-        item.title = value
-      }
-      return item
-    })
-    setTodo(newTodo)
-    setEdit(null)
+    const item = todo.find(item => item.id === id);
+    if (item) {
+      item.title = value
+      setTodo([...todo])
+      setEdit(null)
+    }
   }
 
   return (
-    <div className={s.body}>
+    <div>
       <Row>
         <Col className={s.filter}>
           <Button
-            onClick={() => todoFilter('all')}
+            onClick={() => todoFilter(undefined)}
             variant="outline-primary"
-            className={s.filterbtn}
+            className={s.filterBtn}
           >
             All
           </Button>
           <Button
             onClick={() => todoFilter(true)}
             variant="outline-success"
-            className={s.filterbtn}
+            className={s.filterBtn}
           >
             Open
           </Button>
           <Button
             onClick={() => todoFilter(false)}
             variant="outline-danger"
-            className={s.filterbtn}
+            className={s.filterBtn}
           >
             Closed
           </Button>
         </Col>
       </Row>
 
-      {filtered.map((item) => (
+      {filteredItems.map((item) => (
         <div key={item.id} className={s.listItems}>
           {edit === item.id ? (
             <div>
@@ -122,7 +115,7 @@ function TodoList({ todo, setTodo }) {
               >
                 <FontAwesomeIcon icon={faEdit} />
               </Button>
-              <Button className={s.btn} onClick={() => statusTodo(item.id)}>
+              <Button className={s.btn} onClick={() => switchItemStatus(item.id)}>
                 {item.status ? (
                   <FontAwesomeIcon icon={faLock} />
                 ) : (

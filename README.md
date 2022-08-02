@@ -1,7 +1,7 @@
 <h1 align="center">TodoList with Local Storage</h1>
 
 <p align="center">
-<img src="./readme_assets/animation_todo.gif" width="80%"></p>
+<img src="./readme_assets/animation_todo.gif" width="90%"></p>
 
 <h2 align="center"><a  href="https://mnetace.github.io/local-todo-list-react/">Live Demo</a></h2>
 
@@ -19,9 +19,16 @@ TodoList implemented by scratch on React.js. It contains 3 types of filters name
 
 - **Click** on the input field.
 - **Enter** the text of the new task.
-- **Press** the "Save" button or the "Enter" button on the keyboard.
+- **Click** the "Save" button or the "Enter" button on the keyboard.
 
 ### Close the task
 
 - **Hover** the cursor over the desired task (The task will be highlighted in blue).
 - **Click** on the lock icon (The text will be crossed out).
+
+### Third edits in the readme
+
+- **Hover** the cursor over the desired task (The task will be highlighted in blue).
+- **Click** on the pencil icon (A field for editing the task will appear).
+- **Enter** your changes.
+- **Click** on the floppy disk icon or the "Enter" button on the keyboard.

@@ -43,3 +43,10 @@ TodoList implemented by scratch on React.js. It contains 3 types of filters name
 - **Click** on the "All" button if you need a complete list.
 - **Click** on the "All" button if you need a list of active tasks.
 - **Click** on the "All" button if you need a list of closed tasks.
+
+## Project setup
+
+```
+npm install
+npm start
+```

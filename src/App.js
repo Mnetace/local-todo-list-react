@@ -6,23 +6,22 @@ import { Container } from 'react-bootstrap'
 
 function App() {
   const [todo, setTodo] = useState(() => {
-    const saved = localStorage.getItem('todo')
-    const newTodo = JSON.parse(saved)
-    if (Array.isArray(newTodo) === false) {
-      let newArr = []
-      return newArr
-    }
-    return newTodo
+    return JSON.parse(localStorage.getItem('todo')) ?? [];
   })
+
+  function addTodoItem(item) {
+      setTodo([...todo, item]);
+  }
 
   useEffect(() => {
     localStorage.setItem('todo', JSON.stringify(todo))
+      console.log('update ls')
   }, [todo])
 
   return (
     <Container>
       <Header />
-      <AddTodo todo={todo} setTodo={setTodo} />
+      <AddTodo addTodoItem={addTodoItem} />
       <TodoList todo={todo} setTodo={setTodo} />
     </Container>
   )

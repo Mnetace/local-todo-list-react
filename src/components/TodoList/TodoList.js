@@ -1,14 +1,4 @@
 import React, { useEffect, useState } from 'react'
-// import { Button } from 'react-bootstrap'
-import s from './TodoList.module.css'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import {
-//   faSave,
-//   faTrash,
-//   faEdit,
-//   faLock,
-//   faLockOpen,
-// } from '@fortawesome/free-solid-svg-icons'
 import TodoFilter from '../TodoFilter/TodoFilter'
 import TodoItem from '../TodoItem/TodoItem'
 
@@ -50,20 +40,21 @@ function TodoList({ todo, setTodo }) {
   return (
     <div>
       <TodoFilter setFilteredItems={setFilteredItems} todo={todo} />
-      {filteredItems.map((item) => (
-        <div className={s.listItems}>
+      <div>
+        {filteredItems.map((item) => (
           <TodoItem
+            key={item.id}
+            item={item}
             deleteTodo={deleteTodo}
             switchItemStatus={switchItemStatus}
             editTodo={editTodo}
             saveTodo={saveTodo}
-            item={item}
             edit={edit}
             value={value}
             setValue={setValue}
           />
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   )
 }

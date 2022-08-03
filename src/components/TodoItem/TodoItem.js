@@ -21,7 +21,7 @@ function TodoItem({
   setValue,
 }) {
   return (
-    <div key={item.id}>
+    <div key={item.id} className={s.listItems}>
       {edit === item.id ? (
         <div>
           <input
@@ -37,7 +37,6 @@ function TodoItem({
       ) : (
         <div className={!item.status ? s.close : ''}>{item.title}</div>
       )}
-
       {edit === item.id ? (
         <div>
           <Button onClick={() => saveTodo(item.id)}>

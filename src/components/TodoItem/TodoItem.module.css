@@ -1,5 +1,14 @@
-.item {
-  width: 100%;
+.listItems {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-top: 24px;
+  padding: 6px;
+}
+
+.listItems:hover {
+  background: #d1effd;
+  border-radius: 6px;
 }
 
 .btn {

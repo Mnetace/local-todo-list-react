@@ -1,0 +1,9 @@
+.filter {
+  display: flex;
+  justify-content: center;
+}
+
+.filterBtn {
+  margin-top: 24px;
+  margin-left: 12px;
+}

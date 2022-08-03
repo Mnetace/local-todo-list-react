@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Row, Col, Button } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 import s from './TodoList.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -9,6 +9,7 @@ import {
   faLock,
   faLockOpen,
 } from '@fortawesome/free-solid-svg-icons'
+import TodoFilter from '../TodoFilter/TodoFilter'
 
 function TodoList({ todo, setTodo }) {
   const [edit, setEdit] = useState(null)
@@ -18,14 +19,6 @@ function TodoList({ todo, setTodo }) {
   useEffect(() => {
     setFilteredItems(todo)
   }, [todo])
-
-  function todoFilter(status) {
-    setFilteredItems(
-      status === undefined
-        ? todo
-        : todo.filter((item) => item.status === status)
-    )
-  }
 
   function deleteTodo(id) {
     setTodo(todo.filter((item) => item.id !== id))
@@ -55,31 +48,7 @@ function TodoList({ todo, setTodo }) {
 
   return (
     <div>
-      <Row>
-        <Col className={s.filter}>
-          <Button
-            onClick={() => todoFilter(undefined)}
-            variant="outline-primary"
-            className={s.filterBtn}
-          >
-            All
-          </Button>
-          <Button
-            onClick={() => todoFilter(true)}
-            variant="outline-success"
-            className={s.filterBtn}
-          >
-            Open
-          </Button>
-          <Button
-            onClick={() => todoFilter(false)}
-            variant="outline-danger"
-            className={s.filterBtn}
-          >
-            Closed
-          </Button>
-        </Col>
-      </Row>
+      <TodoFilter setFilteredItems={setFilteredItems} todo={todo} />
 
       {filteredItems.map((item) => (
         <div key={item.id} className={s.listItems}>

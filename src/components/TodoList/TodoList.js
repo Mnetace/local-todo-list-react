@@ -20,9 +20,10 @@ function TodoList({ todo, setTodo }) {
   }, [todo])
 
   function todoFilter(status) {
-    setFilteredItems(status === undefined
+    setFilteredItems(
+      status === undefined
         ? todo
-        : todo.filter(item => item.status === status)
+        : todo.filter((item) => item.status === status)
     )
   }
 
@@ -31,7 +32,7 @@ function TodoList({ todo, setTodo }) {
   }
 
   function switchItemStatus(id) {
-    const item = todo.find(item => item.id === id);
+    const item = todo.find((item) => item.id === id)
     if (item) {
       item.status = !item.status
       setTodo([...todo])
@@ -44,7 +45,7 @@ function TodoList({ todo, setTodo }) {
   }
 
   function saveTodo(id) {
-    const item = todo.find(item => item.id === id);
+    const item = todo.find((item) => item.id === id)
     if (item) {
       item.title = value
       setTodo([...todo])
@@ -115,7 +116,10 @@ function TodoList({ todo, setTodo }) {
               >
                 <FontAwesomeIcon icon={faEdit} />
               </Button>
-              <Button className={s.btn} onClick={() => switchItemStatus(item.id)}>
+              <Button
+                className={s.btn}
+                onClick={() => switchItemStatus(item.id)}
+              >
                 {item.status ? (
                   <FontAwesomeIcon icon={faLock} />
                 ) : (

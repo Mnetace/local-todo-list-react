@@ -1,0 +1,12 @@
+.item {
+  width: 100%;
+}
+
+.btn {
+  margin-left: 12px;
+}
+
+.close {
+  color: gray;
+  text-decoration: line-through;
+}

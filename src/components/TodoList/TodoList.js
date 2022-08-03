@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Button } from 'react-bootstrap'
+// import { Button } from 'react-bootstrap'
 import s from './TodoList.module.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faSave,
-  faTrash,
-  faEdit,
-  faLock,
-  faLockOpen,
-} from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import {
+//   faSave,
+//   faTrash,
+//   faEdit,
+//   faLock,
+//   faLockOpen,
+// } from '@fortawesome/free-solid-svg-icons'
 import TodoFilter from '../TodoFilter/TodoFilter'
+import TodoItem from '../TodoItem/TodoItem'
 
 function TodoList({ todo, setTodo }) {
   const [edit, setEdit] = useState(null)
@@ -49,54 +50,18 @@ function TodoList({ todo, setTodo }) {
   return (
     <div>
       <TodoFilter setFilteredItems={setFilteredItems} todo={todo} />
-
       {filteredItems.map((item) => (
-        <div key={item.id} className={s.listItems}>
-          {edit === item.id ? (
-            <div>
-              <input
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-                onKeyDown={(ev) => {
-                  if (ev.key === 'Enter') {
-                    saveTodo(item.id)
-                  }
-                }}
-              />
-            </div>
-          ) : (
-            <div className={!item.status ? s.close : ''}>{item.title}</div>
-          )}
-
-          {edit === item.id ? (
-            <div>
-              <Button onClick={() => saveTodo(item.id)}>
-                <FontAwesomeIcon icon={faSave} />
-              </Button>
-            </div>
-          ) : (
-            <div>
-              <Button onClick={() => deleteTodo(item.id)}>
-                <FontAwesomeIcon icon={faTrash} />
-              </Button>
-              <Button
-                className={s.btn}
-                onClick={() => editTodo(item.id, item.title)}
-              >
-                <FontAwesomeIcon icon={faEdit} />
-              </Button>
-              <Button
-                className={s.btn}
-                onClick={() => switchItemStatus(item.id)}
-              >
-                {item.status ? (
-                  <FontAwesomeIcon icon={faLock} />
-                ) : (
-                  <FontAwesomeIcon icon={faLockOpen} />
-                )}
-              </Button>
-            </div>
-          )}
+        <div className={s.listItems}>
+          <TodoItem
+            deleteTodo={deleteTodo}
+            switchItemStatus={switchItemStatus}
+            editTodo={editTodo}
+            saveTodo={saveTodo}
+            item={item}
+            edit={edit}
+            value={value}
+            setValue={setValue}
+          />
         </div>
       ))}
     </div>
